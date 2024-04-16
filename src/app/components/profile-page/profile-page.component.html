@@ -1,0 +1,71 @@
+<div class="w-full h-full ">
+  <div class="w-full h-full flex md:flex-row flex-col ">
+    <div class="md:ml-8 mt-10 ml-auto mr-auto   justify-center">
+      <ul class="menu bg-base-200 md:w-56 w-96 rounded-box text-base ">
+        <li class="menu-title">Ustawienia</li>
+        <li>
+          <a
+            [ngClass]="{ active: selectedTab === 'Dane użytkownika' }"
+            (click)="selectedTab = 'Dane użytkownika'"
+            >Dane użytkownika</a
+          >
+        </li>
+        <li>
+          <a
+            [ngClass]="{ active: selectedTab === 'Dane profilu' }"
+            (click)="selectedTab = 'Dane profilu'"
+            >Dane profilu</a
+          >
+        </li>
+        <li>
+          <a
+            [ngClass]="{ active: selectedTab === 'Lista znajomych' }"
+            (click)="selectedTab = 'Lista znajomych'"
+            >Lista znajomych</a
+          >
+        </li>
+        <li>
+          <a
+            [ngClass]="{ active: selectedTab === 'Zmień hobby' }"
+            (click)="selectedTab = 'Zmień hobby'"
+            >Zmień hobby</a
+          >
+        </li>
+        <li>
+          <a
+            [ngClass]="{ active: selectedTab === 'Zmień hasło' }"
+            (click)="selectedTab = 'Zmień hasło'"
+            >Zmień hasło</a
+          >
+        </li>
+        <li>
+          <a
+            [ngClass]="{ active: selectedTab === 'Usuń konto' }"
+            (click)="selectedTab = 'Usuń konto'"
+            >Usuń konto</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="flex items-center justify-center w-full md:ml-5 mt-10 mr-52">
+      @if(selectedTab === 'Dane użytkownika'){
+      <app-user-data-tab></app-user-data-tab>
+      }
+      @if(selectedTab === 'Dane profilu'){
+        <app-profile-data-tab></app-profile-data-tab>
+        }
+        @if(selectedTab === 'Lista znajomych'){
+          <app-friends-list-tab></app-friends-list-tab>
+        }
+        @if(selectedTab === 'Zmień hobby'){
+          <app-change-hobbies></app-change-hobbies>
+        }
+        @if(selectedTab === 'Zmień hasło'){
+          <app-change-password-tab></app-change-password-tab>
+        }
+        @if(selectedTab === 'Usuń konto'){
+          <app-delete-account-tab></app-delete-account-tab>
+        }
+    </div>
+  </div>
+</div>

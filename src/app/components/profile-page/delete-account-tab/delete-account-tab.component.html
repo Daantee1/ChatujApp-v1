@@ -1,0 +1,47 @@
+@if(!deleteAccountAlert){
+
+<div class="bg-base-200 p-10 rounded-lg">
+  <button class="btn btn-error font-semibold" (click)="deleteAccountButton()">
+    Usuń konto
+  </button>
+</div>
+} @if(deleteAccountAlert){
+<div class="rounded-lg bg-base-200 p-5 mr-2 ml-2">
+  <div class="w-full h-full">
+    @if(!deleteAccountConfirmationAlert){
+
+   
+    <div role="alert" class="alert alert-error" [hidden]="accountDeletedSucesfully ">
+      <span
+        >Czy jesteś pewny usunięcia konta? Spowoduje to trwałe usunięcie
+        wszystkich Twoich danych.</span
+      >
+    </div>
+}
+  </div>
+  @if(!deleteAccountConfirmationAlert){
+  <div class="flex mt-5 justify-center" >
+    <button class="btn btn-active mr-2" (click)="deleteAccountConfirmation()" >
+      Tak
+    </button>
+    <button class="btn btn-active" (click)="deleteAccountAlert = false">
+      Nie
+    </button>
+  </div>
+}
+  @if(deleteAccountConfirmationAlert){
+    @if(!accountDeletedSucesfully){
+  <div class="flex justify-center mt-2">
+    <span class="loading loading-infinity loading-lg"></span>
+  </div>
+  <div class="flex justify-center mt-2">
+  <span >Trwa usuwanie konta...</span>
+</div>
+}@else {
+    <div class="flex justify-center ">
+        <span >Konto usunięte pomyślnie. Przekierowywanie na stronę logowania...</span>
+      </div>
+}
+  }
+</div>
+}

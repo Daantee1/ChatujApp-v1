@@ -1,0 +1,60 @@
+<div class="w-96 h-fit flex flex-col bg-base-200 rounded-xl">
+  @if(!show){
+  <h3 class="w-full flex justify-center mt-2 font-semibold text-xl tracking-wide">
+    Zmień hobby
+  </h3>
+  
+  @if(!hobbySelected){
+
+  
+  <div class="ml-5 mt-3 mr-5">
+    <div class="flex flex-wrap mt-5 w-full mb-8"
+    [ngClass]="{
+      'justify-between': currentProfile[0].hobbies.split(',').length > 2,
+      'justify-center': currentProfile[0].hobbies.split(',').length <= 2
+    }"
+    >
+      @for(hobby of currentProfile[0].hobbies.split(','); track hobby.id){
+
+      <button class="btn btn-active w-fit mb-2"
+      [ngClass]="{ 'mr-2': currentProfile[0].hobbies.split(',').length <= 2 }"
+      (click)="changeHobby(hobby)">{{ hobby }}</button>
+
+      }
+    </div>
+    <div class="flex justify-end mb-3 ">
+    <button class="btn btn-active  btn-neutral text-gray-400" (click)="addHobbyButton()">Dodaj nowe hobby</button>
+    </div>
+  
+    
+
+  </div>
+}
+
+
+@if(hobbySelected) {
+  <div class="flex justify-center mt-5 mb-5">
+    <input type="text" (input)="hobbiesNotTheSame = false"  [(ngModel)]="hobbyToUpdate" class="input input-bordered input-md w-full max-w-xs text-lg" />
+
+</div>
+<div class="flex justify-end mb-3 ">
+  <button class="btn btn-active  btn-neutral text-gray-400" (click)="deleteHobby()" [disabled]="hobbiesNotTheSame">Usuń</button>
+  <button class="btn btn-active  btn-neutral text-gray-400 ml-3 mr-8" (click)="updateHobby()">Zmień</button>
+  </div>
+
+}
+}
+@if(showHobbyToAdd){
+  <h3 class="w-full flex justify-center mt-2 text-lg tracking-wide">
+    Dodaj hobby
+  </h3>
+  <div class="flex justify-center mt-5 mb-5">
+    <input type="text" [(ngModel)]="hobbyToAdd" class="input input-bordered input-md w-full max-w-xs text-lg" />
+  </div>
+  <div class="flex justify-end mb-3 mr-8">
+    <button class="btn btn-active  btn-neutral text-gray-400" (click)="addHobby()">Dodaj</button>
+  </div>
+  }
+
+
+</div>

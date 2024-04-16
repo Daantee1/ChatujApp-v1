@@ -1,0 +1,35 @@
+<div class="w-96 h-fit flex flex-col bg-base-200 rounded-xl">
+  <h3
+    class="w-full flex justify-center mt-2 font-semibold text-xl tracking-wide"
+  >
+    Dane profilu
+  </h3>
+  <div class="ml-5 mt-5 mr-5">
+    <p><a class="font-semibold">Płeć: </a>{{ currentProfile[0].gender }}</p>
+    <p class="mt-2">
+      <a class="font-semibold">Wiek: </a>{{ currentProfile[0].age }}
+    </p>
+    <p class="mt-2">
+      <a class="font-semibold">Województwo: </a>{{ currentProfile[0].province }}
+    </p>
+    <p class="mt-2"><a class="font-semibold">Moje hobby: </a></p>
+    <div
+      class="flex flex-wrap mt-5 w-full mb-5"
+      [ngClass]="{
+        'justify-between': currentProfile[0].hobbies.split(',').length > 2,
+        'justify-center': currentProfile[0].hobbies.split(',').length <= 2
+      }"
+    >
+      @for(hobby of currentProfile[0].hobbies.split(','); track hobby.id){
+
+      <button
+        class="btn btn-active w-fit mb-2 text-gray-400"
+        [ngClass]="{ 'mr-2': currentProfile[0].hobbies.split(',').length <= 2 }"
+      >
+        {{ hobby }}
+      </button>
+
+      }
+    </div>
+  </div>
+</div>
